@@ -48,8 +48,8 @@ header {
 }
 
 .logo-container img {
-    margin-left: 60px;
-    width: 100px;
+    
+    max-width: 100px;
     height: auto;
 }
 
