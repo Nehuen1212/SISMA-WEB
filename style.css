@@ -35,6 +35,7 @@ a {
   }
 header {
     background-color: var(--color-fondo-seccion);
+    display: flex;
     color: var(--color-principal);
     padding: 1rem;
     display: flex;
