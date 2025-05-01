@@ -12,8 +12,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--color-fondo);
-    color: var(--color-secundario);
+    background-color: var(--color-terciario);
+    color: var(--color-principal);
     line-height: 1.6;
 }
 a {
