@@ -13,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--color-fondo);
-    color: var(--color-principal);
+    color: var(--color-secundario);
     line-height: 1.6;
 }
 a {
