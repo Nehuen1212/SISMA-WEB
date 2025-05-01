@@ -357,39 +357,60 @@ footer {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+  header {
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-    nav ul {
-        margin-top: 1rem;
-    }
+  .logo-container img {
+    max-width: 80px;
+  }
 
-    nav ul li {
-        margin: 0 10px;
-    }
+  .header-text h1 {
+    font-size: 2.5rem;
+    margin-top: 0.5rem;
+  }
 
-    .hero-section {
-        flex-direction: column;
-        text-align: center;
-    }
+  nav ul {
+    margin-top: 1rem;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 
-    .hero-content {
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
+  nav ul li {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    width: 80%;
+    text-align: center;
+  }
 
-    .hero-content h2 {
-        font-size: 2rem;
-    }
+  nav ul li a {
+    display: block;
+    padding: 0.8rem 1.2rem;
+  }
 
-    .hero-image img {
-        max-width: 80%;
-    }
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .development-details {
-        grid-template-columns: 1fr;
-    }
+  .hero-content {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-image img {
+    max-width: 80%;
+  }
+
+  .development-details {
+    grid-template-columns: 1fr;
+  }
 }
