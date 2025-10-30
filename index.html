@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Logo 3.png" type="image/png">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
@@ -23,188 +23,155 @@
 
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="Logo 3.png" alt="Logo S.I.S.M.A." width="80">
+    <header class="site-header">
+        <div class="brand">
+            <img src="Logo 3.png" alt="Logo S.I.S.M.A." class="brand-logo">
+            <div class="brand-text">
+                <h1>S.I.S.M.A.</h1>
+                <p class="tag">Simulador Interactivo de Sismos</p>
+            </div>
         </div>
-        <div class="header-text">
-            <h1>S.I.S.M.A.</h1>
-           
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#que-es">¿Qué es?</a></li>
-                <li><a href="#caracteristicas">Características</a></li>
-                <li><a href="#desarrollo">Desarrollo</a></li>
-                <li><a href="#equipo">Equipo</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+        <nav class="main-nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#que-es">¿Qué es?</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#desarrollo">Desarrollo</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#contacto">Contacto</a>
         </nav>
     </header>
 
     <main>
-        <section id="inicio" class="hero-section">
-            <div class="hero-content">
-                <h2>Simulador Interactivo de Sismos</h2>
-                <h3>Para Maquetas y Analisis</h3>
-                <p>
-                    S.I.S.M.A. redefine la prueba de estructuras. Diseñado para arquitectos y estudiantes, nuestro simulador
-                    ofrece precisión y control en cada simulación. Pensado para aquellos que quieren llevar la prueba de la estabilidad de su maqueta a otro nivel.
-                </p>
-                <a href="#que-es" class="cta-button">Descubre S.I.S.M.A.</a>
+        <section id="inicio" class="hero">
+            <div class="hero-left">
+                <h2>S.I.S.M.A.</h2>
+                <p class="lead">Simulador interactivo para pruebas de maquetas y análisis estructural. Precisión, registro de datos y control remoto.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#que-es">Descubre S.I.S.M.A.</a>
+                    <a class="btn btn-ghost" href="#desarrollo">Ver detalles técnicos</a>
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="Simulador2.png" alt="Simulador de Sismos">
+            <div class="hero-right">
+                <img src="Simulador2.png" alt="Simulador de Sismos" class="hero-img">
             </div>
         </section>
 
-        <section id="que-es" class="content-section">
-            <h2>¿Qué es S.I.S.M.A.?</h2>
-            <h4>
-                S.I.S.M.A. es una herramienta innovadora para simular terremotos y evaluar la resistencia de maquetas de
-                estructuras. Proporciona un entorno controlado para el análisis y la optimización de diseños.
-            </h4>
-            <h3>Objetivos Clave</h3>
-            <ul>
-                <li>Simulación precisa de terremotos</li>
-                <li>Pruebas exhaustivas de maquetas</li>
-                <li>Control total de los parámetros sísmicos</li>
-                <li>Registro detallado de datos</li>
-            </ul>
+        <section id="que-es" class="panel">
+            <div class="panel-inner">
+                <h2>¿Qué es S.I.S.M.A.?</h2>
+                <p class="muted">Una plataforma compacta para simular movimientos sísmicos y evaluar el comportamiento de maquetas bajo carga dinámica.</p>
+                <ul class="features-list">
+                    <li>Simulación precisa basada en modelos empíricos</li>
+                    <li>Control total de parámetros (intensidad, frecuencia, duración)</li>
+                    <li>Registro y exportación de datos vía Wi‑Fi</li>
+                    <li>Interfaz local y acceso remoto</li>
+                </ul>
+            </div>
         </section>
 
-        <section id="caracteristicas" class="feature-section">
-            <h2>Características Destacadas</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <h3>Simulación Controlada</h3>
-                    <p>
-                        Ajusta la intensidad, frecuencia y duración de los terremotos con precisión milimétrica a travez de parametros que pueden ser controlados por el usuario en su totalidad.
-                    </p>
-                </div>
-                
-                <div class="feature-item">
-                    <h3>Control Intuitivo</h3>
-                    <p>
-                        Interfaz amigable para una configuración rápida y sencilla de las simulaciones. Se puede configurar a travez del propio display manual que viene incorporado en el dispositivo o a travez de nuestra app mediante Wifi.
-                    </p>
-                </div>
-                <div class="feature-item">
-                    <h3>Registro de Datos</h3>
-                    <p>
-                        Almacena resultados de cada simulacion en una tabla que se puede observar desde una web o aplicacion, puediendo guardarlos y analizarlos o compararlos para optimizar tus diseños.
-                    </p>
+        <section id="caracteristicas" class="panel">
+            <div class="panel-inner">
+                <h2>Características</h2>
+                <div class="grid cols-3">
+                    <div class="card">
+                        <h3>Simulación controlada</h3>
+                        <p class="muted">Parámetros finos para replicar distintos escenarios sísmicos.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Control remoto</h3>
+                        <p class="muted">Wi‑Fi integrado para monitoreo y control desde web o app.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Registro de datos</h3>
+                        <p class="muted">Exporta resultados para análisis y comparativas.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="desarrollo" class="content-section">
-            <h2>Desarrollo del Proyecto</h2>
-           
-            
-            <div class="development-details">
-                <div class="item-details">
-                    <h4>Base Fija</h4>
-                    <p>
-                        Estructura y piezas robustas que proporcionan estabilidad al sistema, para una mayor seguridad y duracion a la hora de las simulaciones
-                    </p>
+        <section id="desarrollo" class="panel">
+            <div class="panel-inner">
+                <h2>Desarrollo técnico</h2>
+                <div class="grid cols-2">
+                    <div class="card small">
+                        <h4>Base fija</h4>
+                        <p class="muted">Estructura robusta para estabilidad y seguridad durante pruebas.</p>
+                    </div>
+                    <div class="card small">
+                        <h4>Base móvil</h4>
+                        <p class="muted">Plataforma accionada por Nema 17 y sistema de poleas.</p>
+                    </div>
+                    <div class="card small">
+                        <h4>ESP32</h4>
+                        <p class="muted">Microcontrolador para control y conectividad.</p>
+                    </div>
+                    <div class="card small">
+                        <h4>Control Wi‑Fi</h4>
+                        <p class="muted">Monitoreo remoto, registro y exportación de datos.</p>
+                    </div>
                 </div>
-                <div class="item-details">
-                    <h4>Base Móvil</h4>
-                    <p>
-                        Plataforma dinámica impulsada por un sistema de poleas y motor Nema 17. Sobre esta se situa un canasto donde se incluira tierra u otro material sobre el que se desee construir la maqueta.
-                    </p>
-                </div>
-                <div class="item-details">
-                    <h4>Microcontrolador ESP32</h4>
-                    <p>
-                        Gracias a este poderoso microcontrolador programable podemos obtener un control preciso de las simulaciones y gestión de datos.
-                    </p>
-                </div>
-                <div class="item-details">
-                    <h4>Control Wifi</h4>
-                    <p>
-                        Operación remota y monitoreo a través de una aplicación móvil y una web, junto con una planilla, todo conectado vía wifi con el dispositivo para que este registre todas las simulaciones.
-                    </p>
-                </div>
-                <div class="item-details">
-                    <h4>Simulación de Terremotos</h4>
-                    <p>
-                        Modelo matemático basado en la escala de Richter para simulación realista.
-                    </p>
-                
-                </div>
-                
             </div>
-            
         </section>
 
-        <section id="equipo" class="team-section">
-            <h2>Nuestro Equipo</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="foto_contaco.jpg" alt="Miembro 1">
-                    <a href="https://www.instagram.com/dante.navaarrete/" target="_blank"><h3>Dante Alejandro Navarrete</h3></a>
-                    
-                    <h4>Electronico</h4>
-                    <p>
-                         Experiencia en el analisis de circuitos y en el calculo. Diseñador de esquematicos.
-                    </p>
+        <section id="equipo" class="panel team-panel">
+            <div class="panel-inner">
+                <h2>Equipo</h2>
+                <div class="team-grid">
+                    <div class="member">
+                        <img src="foto_contaco.jpg" alt="Dante Alejandro Navarrete">
+                        <a href="https://www.instagram.com/dante.navaarrete/" target="_blank"><h3>Dante Alejandro Navarrete</h3></a>
+                        <p class="role">Electrónico</p>
+                        <p class="muted">Experiencia en el análisis de circuitos y en el cálculo. Diseñador de esquemáticos.</p>
+                    </div>
+                    <div class="member">
+                        <img src="foto_contaco.jpg" alt="David Agustin Melnik">
+                        <a href="https://www.instagram.com/melnik_d.44/" target="_blank"><h3>David Agustin Melnik</h3></a>
+                        <p class="role">Administrativo</p>
+                        <p class="muted">Encargado de la administración y registro del proyecto y CM de las redes sociales.</p>
+                    </div>
+                    <div class="member">
+                        <img src="foto_contaco.jpg" alt="Rodrigo Ezequiel Teran">
+                        <a href="https://www.instagram.com/rodri.dkl/" target="_blank"><h3>Rodrigo Ezequiel Teran</h3></a>
+                        <p class="role">Montaje y Armado</p>
+                        <p class="muted">Montaje de piezas, armado, corte, ensamblado, pintura y soldadura.</p>
+                    </div>
+                    <div class="member">
+                        <img src="foto_contaco.jpg" alt="Tiziano Nehuén Paglia Vucassovich">
+                        <a href="https://www.instagram.com/nehu.pag/" target="_blank"><h3>Tiziano Nehuén Paglia Vucassovich</h3></a>
+                        <p class="role">Programación y diseño</p>
+                        <p class="muted">Programación de microcontroladores, PCBs y desarrollo de apps/webs.</p>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="foto_contaco.jpg" alt="Miembro 2">
-                    <a href="https://www.instagram.com/melnik_d.44/" target="_blank"><h3>David Agustin Melnik</h3></a>
-                    
-                    <h4>Administrativo</h4>
-                    <p>
-                         Encargado de la administracion y registro del proyecto y CM de las redes sociales.
-                    </p>
-                </div>
-                <div class="team-member">
-                    <img src="foto_contaco.jpg" alt="Miembro 1">
-                    <a href="https://www.instagram.com/rodri.dkl/" target="_blank"> <h3>Rodrigo Ezequiel Teran</h3></a>
-                   
-                    <h4>Montaje y Armado</h4>
-                    <p>
-                        Montaje de piezas, armado, cortado, ensamblado, pintura, soldadura, etc.
-
-                    </p>
-                </div>
-                <div class="team-member">
-                    <img src="foto_contaco.jpg" alt="Miembro 1">
-                    <a href="https://www.instagram.com/nehu.pag/" target="_blank"> <h3>Tiziano Nehuén Paglia Vucassovich</h3></a>
-                    
-                    <h4>Programación y diseño</h4>
-                    <p>
-                         Programación de microcontroladores, diseño de piezas, PCBs y creación de aplicaciones y webs.
-                    </p>
-                </div>
-                </div>
+            </div>
         </section>
 
-       <section class="contacto">
-        <div>
-            <h1>Contacto</h1>
-        </div>
-        <div class="contacto-WSP">
-            <a href="https://wa.me/+5491145636971" target="_blank">
-                
-                <img class="contacto-image" src="WhatsApp.svg.webp" alt="WhatsApp">  <h4>Chatea con nostros</h4>
-            </a>
-             <a href="https://www.instagram.com/electromentor_/" target="_blank">
-                
-                <img class="contacto-image" src="instagram.png" alt="Instagram">  <h4>Instagram</h4>
-            </a>
-            
-            <a>
-                
-                <img class="contacto-image" src="mp.jpg" alt="Mercado Pago">  <h4>Aceptamos donaciones vía transferencia: nehu.paglia.mp (en motivo de transferencia colocra: "Donacion SISMA")</h4>
-            </a>
-            
-        </div>
-        
-
+       <section id="contacto" class="panel contact-panel">
+            <div class="panel-inner">
+                <h2>Contacto</h2>
+                <div class="contact-grid">
+                    <a class="contact-item" href="https://wa.me/+5491145636971" target="_blank">
+                        <img src="WhatsApp.svg.webp" alt="WhatsApp">
+                        <div>
+                            <h4>Chatea con nosotros</h4>
+                            <p class="muted">WhatsApp disponible para consultas rápidas.</p>
+                        </div>
+                    </a>
+                    <a class="contact-item" href="https://www.instagram.com/electromentor_/" target="_blank">
+                        <img src="instagram.png" alt="Instagram">
+                        <div>
+                            <h4>Instagram</h4>
+                            <p class="muted">Sigue nuestro trabajo y novedades.</p>
+                        </div>
+                    </a>
+                    <div class="contact-item">
+                        <img src="mp.jpg" alt="Mercado Pago">
+                        <div>
+                            <h4>Donaciones</h4>
+                            <p class="muted">Aceptamos donaciones vía transferencia: <strong>nehu.paglia.mp</strong> (motivo: "Donacion SISMA").</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
        </section>
 
     <footer>

@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     const mensajeEnviado = document.getElementById('mensaje-enviado');
 
+    // Protegemos el código por si el formulario no está en la página.
+    if (!contactForm) {
+        // No hay formulario, nada que hacer.
+        return;
+    }
+
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -9,14 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // o para procesar los datos localmente.
         // Para este ejemplo, simplemente mostraremos un mensaje de éxito.
 
-        contactForm.style.display = 'none';
-        mensajeEnviado.style.display = 'block';
+        if (mensajeEnviado) {
+            contactForm.style.display = 'none';
+            mensajeEnviado.style.display = 'block';
 
-        // Opcional: Resetear el formulario después de un tiempo
-        setTimeout(() => {
+            // Resetear el formulario después de un tiempo
+            setTimeout(() => {
+                contactForm.reset();
+                contactForm.style.display = 'block';
+                mensajeEnviado.style.display = 'none';
+            }, 3000); // Mostrar el mensaje por 3 segundos
+        } else {
+            // Si no existe el contenedor de mensaje, solo resetear.
             contactForm.reset();
-            contactForm.style.display = 'block';
-            mensajeEnviado.style.display = 'none';
-        }, 3000); // Mostrar el mensaje por 3 segundos
+        }
     });
 });
