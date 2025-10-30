@@ -44,7 +44,7 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-left">
-                <h2>S.I.S.M.A.</h2>
+                <h2>SISMA</h2>
                 <p class="lead">Simulador interactivo para pruebas de maquetas y análisis estructural. Precisión, registro de datos y control remoto.</p>
                 <div class="hero-actions">
                     <a class="btn btn-primary" href="#que-es">Descubre S.I.S.M.A.</a>
@@ -92,23 +92,78 @@
         <section id="desarrollo" class="panel">
             <div class="panel-inner">
                 <h2>Desarrollo técnico</h2>
-                <div class="grid cols-2">
-                    <div class="card small">
-                        <h4>Base fija</h4>
-                        <p class="muted">Estructura robusta para estabilidad y seguridad durante pruebas.</p>
+                    <p class="lead">Una plataforma de simulación sismica diseñada para evaluar la estabilidad estructural con control preciso y monitoreo en tiempo real.</p>
+                
+                    <div class="grid cols-2">
+                        <div class="card tech-card">
+                            <h4>Base fija</h4>
+                            <ul class="tech-list">
+                                <li>Estructura en aluminio 4040 de alta resistencia</li>
+                                <li>Sistema de nivelación automática en las patas</li>
+                                <li>Diseño modular para fácil mantenimiento</li>
+                                <li>Acabado anodizado para mayor durabilidad</li>
+                            </ul>
+                        </div>
+                    
+                        <div class="card tech-card">
+                            <h4>Sistema de movimiento</h4>
+                            <ul class="tech-list">
+                                <li>Motor NEMA 17 de alto torque (1.8° por paso)</li>
+                                <li>Sistema de poleas GT2 para transmisión precisa</li>
+                                <li>Plataforma móvil sobre guías lineales</li>
+                                <li>Sensores de límite para seguridad</li>
+                            </ul>
+                        </div>
+
+                        <div class="card tech-card">
+                            <h4>Control electrónico</h4>
+                            <ul class="tech-list">
+                                <li>ESP32-WROOM-32 (dual-core, WiFi+BLE)</li>
+                                <li>Driver A4988 para control preciso del motor</li>
+                                <li>Display OLED para configuración local</li>
+                                <li>Sistema de alimentación redundante</li>
+                            </ul>
+                        </div>
+
+                        <div class="card tech-card">
+                            <h4>Software y conectividad</h4>
+                            <ul class="tech-list">
+                                <li>API REST para control remoto</li>
+                                <li>Interfaz web responsive</li>
+                                <li>Almacenamiento de datos en tiempo real</li>
+                                <li>Exportación en formatos CSV/JSON</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card small">
-                        <h4>Base móvil</h4>
-                        <p class="muted">Plataforma accionada por Nema 17 y sistema de poleas.</p>
-                    </div>
-                    <div class="card small">
-                        <h4>ESP32</h4>
-                        <p class="muted">Microcontrolador para control y conectividad.</p>
-                    </div>
-                    <div class="card small">
-                        <h4>Control Wi‑Fi</h4>
-                        <p class="muted">Monitoreo remoto, registro y exportación de datos.</p>
-                    </div>
+
+                    <div class="tech-specs">
+                        <h4>Especificaciones técnicas</h4>
+                        <div class="grid cols-3">
+                            <div class="spec-item">
+                                <span class="spec-label">Rango de frecuencia</span>
+                                <span class="spec-value">0.1 - 10 Hz</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Amplitud máxima</span>
+                                <span class="spec-value">±50 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Carga máxima</span>
+                                <span class="spec-value">5 kg</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Precisión</span>
+                                <span class="spec-value">0.1 mm</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Alimentación</span>
+                                <span class="spec-value">12V DC / 5A</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Conectividad</span>
+                                <span class="spec-value">WiFi 2.4GHz</span>
+                            </div>
+                        </div>
                 </div>
             </div>
         </section>
