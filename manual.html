@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de usuario | SISMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #041f31;
+            --navy-soft: #0d2d42;
+            --orange: #ef7c2d;
+            --white: #f4f7fb;
+            --muted: rgba(255, 255, 255, 0.76);
+            --panel: rgba(255, 255, 255, 0.04);
+            --line: rgba(255, 255, 255, 0.12);
+            --bg: #dfe2e6;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #e8ebf1, var(--bg));
+            color: var(--white);
+        }
+        a { color: inherit; text-decoration: none; }
+        h1, h2, h3, p { margin: 0; }
+
+        .manual-shell {
+            width: min(1200px, calc(100% - 32px));
+            margin: 36px auto;
+            background: var(--navy);
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(4, 31, 49, 0.18);
+        }
+
+        .manual-header {
+            padding: 40px 42px 18px;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(135deg, rgba(239,124,45,0.10), rgba(255,255,255,0.02));
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .brand-mark {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd2a1, var(--orange));
+            display: grid;
+            place-items: center;
+            color: var(--navy);
+            font-weight: 900;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--white);
+            background: rgba(255,255,255,0.02);
+            font-weight: 700;
+        }
+
+        .manual-title {
+            font-size: clamp(2.8rem, 6vw, 5.2rem);
+            line-height: 0.92;
+            letter-spacing: -0.06em;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .manual-subtitle {
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 820px;
+        }
+
+        .manual-body {
+            padding: 28px 42px 40px;
+        }
+
+        .manual-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-bottom: 22px;
+        }
+
+        .manual-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 22px 20px;
+        }
+
+        .manual-card h3 {
+            font-size: 1.45rem;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+        }
+
+        .manual-card p,
+        .manual-card li {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+
+        .manual-card ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .manual-steps {
+            margin-top: 4px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 16px;
+            align-items: start;
+            padding: 16px 18px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .step-num {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffbf84, var(--orange));
+            color: var(--navy);
+            font-weight: 900;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.96rem;
+        }
+
+        @media (max-width: 780px) {
+            .manual-grid {
+                grid-template-columns: 1fr;
+            }
+            .manual-header, .manual-body {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="manual-shell">
+        <header class="manual-header">
+            <div class="topbar">
+                <div class="brand">
+                    <div class="brand-mark">S</div>
+                    SISMA
+                </div>
+                <a class="back-link" href="index.html">Volver a inicio</a>
+            </div>
+
+            <h1 class="manual-title">Manual de usuario</h1>
+            <p class="manual-subtitle">
+                Este manual explica de manera técnica y didáctica el funcionamiento del proyecto SISMA,
+                sus objetivos, la forma de encender y observar la maqueta, y la manera de presentar los resultados obtenidos.
+            </p>
+        </header>
+
+        <main class="manual-body">
+            <section class="manual-grid">
+                <article class="manual-card">
+                    <h3>Descripción general</h3>
+                    <p>
+                        SISMA es un prototipo orientado a recrear vibraciones sísmicas sobre una maqueta estructural con el objetivo de analizar
+                        cómo responde una estructura ante condiciones dinámicas similares a un sismo real.
+                    </p>
+                </article>
+
+                <article class="manual-card">
+                    <h3>Objetivo del proyecto</h3>
+                    <p>
+                        Permitir estudiar el comportamiento estructural bajo movimiento, observar deformaciones y comprender la relación entre
+                        materiales, diseño y estabilidad ante cargas dinámicas.
+                    </p>
+                </article>
+            </section>
+
+            <section class="manual-grid">
+                <article class="manual-card">
+                    <h3>Requisitos</h3>
+                    <ul>
+                        <li>Base estable para la maqueta.</li>
+                        <li>Conexión eléctrica y/o alimentación del sistema.</li>
+                        <li>Control del nivel de vibración a utilizar.</li>
+                        <li>Atención durante la observación de resultados.</li>
+                    </ul>
+                </article>
+
+                <article class="manual-card">
+                    <h3>Elementos principales</h3>
+                    <ul>
+                        <li>Maqueta estructural.</li>
+                        <li>Sistema de movimiento controlado.</li>
+                        <li>Electrónica para accionamiento y monitoreo.</li>
+                        <li>Conexión Wi‑Fi o local para seguimiento del funcionamiento.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="manual-card">
+                <h3>Procedimiento de uso</h3>
+                <div class="manual-steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <h3>Preparación de la maqueta</h3>
+                            <p>Colocar la estructura sobre una superficie estable y verificar que los elementos estén bien sujetos antes de iniciar la prueba.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <h3>Activación del sistema</h3>
+                            <p>Encender el prototipo y verificar que el mecanismo de vibración funcione correctamente y sin anomalías en la alimentación.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <h3>Simulación</h3>
+                            <p>Configurar la intensidad del movimiento para evaluar diferentes niveles de respuesta estructural y observar cómo se comporta la maqueta.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div>
+                            <h3>Observación y análisis</h3>
+                            <p>Registrar los desplazamientos, deformaciones y estabilidad de la estructura para comparar resultados y validarlos con la teoría.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="manual-grid" style="margin-top: 22px;">
+                <article class="manual-card">
+                    <h3>Recomendaciones</h3>
+                    <p>
+                        No sobrecargar la estructura durante la prueba, evitar golpes externos y mantener el sistema conectado con la configuración correcta.
+                        La observación constante permite detectar puntos críticos y mejorar la interpretación del comportamiento sísmico.
+                    </p>
+                </article>
+
+                <article class="manual-card">
+                    <h3>Presentación del proyecto</h3>
+                    <p>
+                        Para la exposición, se recomienda explicar la idea del proyecto, la maqueta, la simulación del movimiento y los resultados obtenidos,
+                        destacando el trabajo colaborativo y el enfoque técnico de la propuesta.
+                    </p>
+                </article>
+            </section>
+
+            <div class="footer-note">
+                SISMA • Simulador de sismos para maquetas y análisis • Manual de uso del prototipo
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
