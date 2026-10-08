@@ -1,97 +1,324 @@
 
-/* Tema oscuro minimalista — corregido (sin anidamiento accidental) */
-:root{
-  --bg:#0b0f14; /* muy oscuro */
-  --card:#0f1720;
-  --muted:#9aa6b2;
-  --accent:#00d1ff; /* cian tecnológico */
-  --glass: rgba(255,255,255,0.03);
-  --radius:12px;
-  --max-width:1100px;
+:root {
+    --navy: #041f31;
+    --navy-deep: #041f31;
+    --orange: #ef7c2d;
+    --orange-dark: #d9641a;
+    --white: #f5f7fb;
+    --muted: rgba(255, 255, 255, 0.82);
+    --bg: #dfe2e6;
+    --line: rgba(255, 255, 255, 0.12);
+    --shadow: rgba(3, 19, 31, 0.18);
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background:linear-gradient(180deg,var(--bg) 0%, #071018 100%);
-  color:#e6eef3;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.5;
+* {
+    box-sizing: border-box;
 }
 
-main{max-width:var(--max-width);margin:40px auto;padding:0 20px}
-
-.site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:transparent}
-.brand{display:flex;align-items:center;gap:14px}
-.brand-logo{width:56px;height:56px;object-fit:contain;border-radius:8px}
-.brand-text h1{margin:0;font-size:18px;letter-spacing:1px}
-.brand-text .tag{margin:0;color:var(--muted);font-size:13px}
-
-.main-nav{display:flex;gap:16px}
-.main-nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;transition:all .18s}
-.main-nav a:hover{color:var(--accent);transform:translateY(-2px)}
-
-.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px}
-.hero-left h2{font-size:42px;margin:0 0 8px;color:white}
-.lead{color:var(--muted);margin:0 0 18px;font-size:16px}
-.hero-actions{display:flex;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:600;text-decoration:none}
-.btn-primary{background:linear-gradient(90deg,var(--accent),#00b2e6);color:#04141b}
-.btn-ghost{border:1px solid rgba(255,255,255,0.05);color:var(--muted);background:transparent}
-.hero-img{width:100%;max-width:420px;border-radius:10px;pad:10px;display:block}
-
-.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:var(--radius);margin-bottom:18px;backdrop-filter: blur(6px)}
-.panel-inner h2{margin:0 0 8px;color:#dff6ff}
-.muted{color:var(--muted);font-size:14px}
-
-.features-list{margin:12px 0 0;padding-left:20px}
-.features-list li{margin:8px 0;color:var(--muted)}
-
-.grid{display:grid;gap:12px}
-.cols-3{grid-template-columns:repeat(3,1fr)}
-.cols-2{grid-template-columns:repeat(2,1fr)}
-
-.card{background:var(--card);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-.card h3{margin:0 0 6px}
-.card.small{padding:12px}
-
-/* Tarjetas técnicas */
-.tech-card{padding:20px}
-.tech-list{margin:12px 0 0;padding-left:20px;list-style:none}
-.tech-list li{position:relative;margin:8px 0;padding-left:16px;color:var(--muted)}
-.tech-list li:before{content:"•";position:absolute;left:0;color:var(--accent)}
-
-/* Especificaciones técnicas */
-.tech-specs{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05)}
-.tech-specs h4{margin:0 0 16px;color:#dff6ff}
-.spec-item{background:var(--card);padding:12px;border-radius:8px;display:flex;flex-direction:column;gap:4px;text-align:center}
-.spec-label{color:var(--muted);font-size:13px;font-weight:500}
-.spec-value{color:var(--accent);font-weight:600;font-size:15px}
-
-.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:12px}
-.member{background:var(--card);padding:16px;border-radius:12px;text-align:center}
-.member img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,0,0,0.35);margin-bottom:10px}
-.member h3{margin:4px 0 2px;color:#e6f9ff}
-.role{color:var(--accent);font-weight:700;margin:0 0 8px}
-
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
-.contact-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--card);border-radius:12px;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,0.02)}
-.contact-item img{width:42px;height:42px;object-fit:contain}
-.contact-item h4{margin:0}
-
-footer{max-width:var(--max-width);margin:20px auto 40px;color:var(--muted);text-align:center}
-
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr 320px}
+html {
+    scroll-behavior: smooth;
 }
-@media (max-width:760px){
-  .main-nav{display:none}
-  .hero{grid-template-columns:1fr;gap:18px}
-  .hero-right{order:-1}
-  .cols-3{grid-template-columns:1fr}
-  .cols-2{grid-template-columns:1fr}
-  main{margin:20px auto;padding:0 16px}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+p,
+h1,
+h3,
+h4 {
+    margin: 0;
+}
+
+.page-shell {
+    position: relative;
+    width: min(1360px, calc(100% - 48px));
+    margin: 52px auto;
+    background: var(--navy);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 22px 32px var(--shadow);
+}
+
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.08fr 1.12fr;
+    align-items: center;
+    min-height: 820px;
+    padding: 30px 42px 20px;
+    background: var(--navy);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: -130px;
+    bottom: -90px;
+    width: 800px;
+    height: 620px;
+    background: var(--orange);
+    border-radius: 300px 0 0 300px;
+    z-index: 0;
+}
+
+.hero-left,
+.hero-right {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.98);
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.brand-badge img {
+    width: 88%;
+    height: 88%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.big-title {
+    margin: 0;
+    font-size: clamp(5.1rem, 12vw, 13rem);
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.07em;
+    color: var(--white);
+}
+
+.hero-copy {
+    margin-top: 28px;
+    max-width: 740px;
+    font-size: clamp(2.1rem, 3vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.cta-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    min-height: 74px;
+    padding: 0 28px;
+    background: var(--orange);
+    border-radius: 30px;
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.cta-wrap:hover {
+    transform: translateY(-2px);
+}
+
+.cta-wrap a {
+    font-size: clamp(1.3rem, 2vw, 2.2rem);
+    line-height: 1;
+    letter-spacing: -0.06em;
+    font-weight: 800;
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.team-list {
+    margin-top: 42px;
+    max-width: 760px;
+}
+
+.team-list h3 {
+    font-size: clamp(1.5rem, 2.7vw, 3.3rem);
+    line-height: 1.18;
+    letter-spacing: -0.06em;
+    font-weight: 900;
+    color: var(--white);
+}
+
+.school-line {
+    margin-top: 28px;
+    font-size: clamp(1.35rem, 2vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.05em;
+    font-weight: 900;
+    color: var(--white);
+}
+
+.hero-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 760px;
+}
+
+.photo-scene {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(760px, 100%);
+    height: 700px;
+}
+
+.photo-scene::before {
+    content: "";
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    width: 92%;
+    height: 82%;
+    transform: translateY(-50%);
+    background: linear-gradient(180deg, #dc6100, #f57d2a);
+    border-radius: 52% 0 0 52%;
+    box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.04);
+}
+
+.photo-frame {
+    position: relative;
+    z-index: 1;
+    width: min(620px, 84%);
+    aspect-ratio: 1.1 / 1;
+    overflow: hidden;
+    border-radius: 48% 0 0 48%;
+    border: 16px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.1) contrast(1.08);
+}
+
+.page-number {
+    position: absolute;
+    right: 42px;
+    bottom: 18px;
+    z-index: 2;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    padding: 26px 42px 44px;
+    background: rgba(6, 27, 39, 0.95);
+    border-top: 1px solid var(--line);
+}
+
+.mini-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px 20px;
+    min-height: 180px;
+}
+
+.mini-card h4 {
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+}
+
+.mini-card p {
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+@media (max-width: 1100px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-bottom: 60px;
+    }
+
+    .hero::after {
+        right: -140px;
+        bottom: -40px;
+        width: 740px;
+        height: 510px;
+    }
+
+    .hero-right {
+        min-height: 440px;
+        margin-top: 20px;
+    }
+
+    .photo-scene {
+        width: min(620px, 100%);
+        height: 500px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-shell {
+        width: min(100%, calc(100% - 18px));
+        margin: 16px auto;
+    }
+
+    .hero {
+        padding: 18px 18px 18px;
+        min-height: auto;
+    }
+
+    .brand-badge {
+        width: 112px;
+        height: 112px;
+    }
+
+    .big-title {
+        font-size: 4.5rem;
+    }
+
+    .hero-copy {
+        font-size: 2.1rem;
+    }
+
+    .team-list h3 {
+        font-size: 2.1rem;
+    }
+
+    .school-line {
+        font-size: 1.3rem;
+    }
+
+    .cta-wrap {
+        width: 100%;
+        min-height: 60px;
+    }
+
+    .content-grid {
+        padding: 18px 18px 26px;
+    }
 }
