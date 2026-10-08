@@ -22,7 +22,7 @@ html {
 
 body {
     margin: 0;
-    background: var(--bg);
+    background: radial-gradient(circle at top, #0e2a3d 0%, #071d2a 32%, #020c13 100%);
     color: var(--white);
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -49,12 +49,12 @@ a {
 
 .page-shell {
     position: relative;
-    width: 100%;
-    margin: 0;
+    width: min(1180px, calc(100% - 66px));
+    margin: 30px auto;
     background: var(--navy);
-    border-radius: 0;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: none;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
 }
 
 .hero {
@@ -259,7 +259,7 @@ a {
 
 .main-content {
     padding: 28px 42px 40px;
-    background: rgba(8, 31, 46, 0.9);
+    background: rgba(8, 31, 46, 0.92);
 }
 
 .section {
@@ -511,8 +511,8 @@ a {
 
 @media (max-width: 640px) {
     .page-shell {
-        width: 100%;
-        margin: 0;
+        width: calc(100% - 18px);
+        margin: 10px auto;
     }
 
     .hero {
