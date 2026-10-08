@@ -486,6 +486,16 @@ a {
     line-height: 1;
 }
 
+.prototype-link {
+    display: block;
+    transition: transform 0.28s ease, filter 0.28s ease;
+}
+
+.prototype-link:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.04);
+}
+
 .prototype-panel {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
     border: 1px solid var(--line);
@@ -506,6 +516,88 @@ a {
 .prototype-panel:hover img {
     transform: scale(1.02);
     filter: saturate(1.1) contrast(1.06);
+}
+
+.gallery-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #061f2d 0%, #071522 100%);
+    color: var(--white);
+    padding: 40px 20px 60px;
+}
+
+.gallery-shell {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gallery-header h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.06em;
+    margin-bottom: 12px;
+}
+
+.gallery-header p {
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.gallery-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 14px;
+    overflow: hidden;
+    box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 179, 106, 0.4);
+    box-shadow: 0 22px 32px rgba(0, 0, 0, 0.18), 0 0 18px rgba(239, 124, 45, 0.12);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.03);
+}
+
+.gallery-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--white);
+    font-weight: 700;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.gallery-back:hover {
+    transform: translateX(-2px);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .contact-grid {
