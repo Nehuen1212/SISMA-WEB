@@ -49,12 +49,12 @@ a {
 
 .page-shell {
     position: relative;
-    width: min(1360px, calc(100% - 48px));
-    margin: 52px auto;
+    width: 100%;
+    margin: 0;
     background: var(--navy);
-    border-radius: 18px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 22px 32px var(--shadow);
+    box-shadow: none;
 }
 
 .hero {
@@ -505,8 +505,8 @@ a {
 
 @media (max-width: 640px) {
     .page-shell {
-        width: min(100%, calc(100% - 18px));
-        margin: 16px auto;
+        width: 100%;
+        margin: 0;
     }
 
     .hero {
