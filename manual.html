@@ -218,96 +218,118 @@
         <main class="manual-body">
             <section class="manual-grid">
                 <article class="manual-card">
-                    <h3>Descripción general</h3>
+                    <h3>Producto Tecnológico</h3>
                     <p>
-                        SISMA es un prototipo orientado a recrear vibraciones sísmicas sobre una maqueta estructural con el objetivo de analizar
-                        cómo responde una estructura ante condiciones dinámicas similares a un sismo real.
+                        El planteamiento del problema llevó al desarrollo de un prototipo de simulación de sismos unidireccional (en un solo eje),
+                        al que llamamos SISMA - X1. Se trata de un carro móvil controlado mediante un microcontrolador ESP32 y un sistema GRBL,
+                        similar a los comandos de una máquina CNC.
                     </p>
                 </article>
 
                 <article class="manual-card">
-                    <h3>Objetivo del proyecto</h3>
+                    <h3>Introducción al producto</h3>
                     <p>
-                        Permitir estudiar el comportamiento estructural bajo movimiento, observar deformaciones y comprender la relación entre
-                        materiales, diseño y estabilidad ante cargas dinámicas.
+                        El sistema incluye una PCB a medida y un gabinete dedicado para la unidad de control. El diseño integra de forma compacta
+                        las conexiones para comunicación serial, las etapas de potencia para las bobinas del motor y los conectores para los finales de carrera.
                     </p>
                 </article>
             </section>
 
+            <section class="manual-card">
+                <h3>Programa de control</h3>
+                <p>
+                    El programa de control de SISMA está diseñado para ser fácil de usar y comprender, permitiendo al usuario gestionar la generación
+                    de sismos, la ejecución y el control del prototipo. Se divide en tres secciones principales: generador de sismos, ejecución y conversión de sismogramas.
+                </p>
+            </section>
+
             <section class="manual-grid">
                 <article class="manual-card">
-                    <h3>Requisitos</h3>
+                    <h3>Pestaña generador de sismos</h3>
+                    <p>El usuario ingresa los parámetros deseados y exporta el archivo .GCODE con el botón “Generar G-CODE”.</p>
                     <ul>
-                        <li>Base estable para la maqueta.</li>
-                        <li>Conexión eléctrica y/o alimentación del sistema.</li>
-                        <li>Control del nivel de vibración a utilizar.</li>
-                        <li>Atención durante la observación de resultados.</li>
+                        <li><strong>Magnitud Richter:</strong> 1 a 10.</li>
+                        <li><strong>Ciclos:</strong> repeticiones de la onda.</li>
+                        <li><strong>Amplitud:</strong> 1 mm - 200 mm.</li>
+                        <li><strong>Velocidad:</strong> mm/s.</li>
+                        <li><strong>Aceleración:</strong> mm/s².</li>
                     </ul>
                 </article>
 
                 <article class="manual-card">
-                    <h3>Elementos principales</h3>
+                    <h3>Pestaña de ejecución</h3>
+                    <p>Permite controlar la conexión, el movimiento manual, la carga y ejecución del archivo G-CODE y la operación del prototipo.</p>
                     <ul>
-                        <li>Maqueta estructural.</li>
-                        <li>Sistema de movimiento controlado.</li>
-                        <li>Electrónica para accionamiento y monitoreo.</li>
-                        <li>Conexión Wi‑Fi o local para seguimiento del funcionamiento.</li>
+                        <li><strong>Puerto:</strong> selecciona el COM.</li>
+                        <li><strong>Conectar:</strong> envía “?” para iniciar la comunicación.</li>
+                        <li><strong>HOME:</strong> $H para establecer el origen.</li>
+                        <li><strong>CARGAR:</strong> carga el archivo G-code.</li>
+                        <li><strong>EJECUTAR:</strong> envía el archivo o reanuda la ejecución.</li>
                     </ul>
                 </article>
             </section>
 
             <section class="manual-card">
-                <h3>Procedimiento de uso</h3>
+                <h3>Pestaña de conversión de sismogramas</h3>
+                <p>
+                    Desde esta pestaña el usuario puede importar un sismo en formato GeoCSV, visualizar los datos más relevantes y la gráfica del movimiento,
+                    y generar el archivo de simulación .gcode listo para ejecutarse.
+                </p>
+            </section>
+
+            <section class="manual-card">
+                <h3>Flujo e indicaciones de uso</h3>
                 <div class="manual-steps">
                     <div class="step">
                         <div class="step-num">1</div>
                         <div>
-                            <h3>Preparación de la maqueta</h3>
-                            <p>Colocar la estructura sobre una superficie estable y verificar que los elementos estén bien sujetos antes de iniciar la prueba.</p>
+                            <h3>Conexión y encendido</h3>
+                            <p>Conecte el JACK DC del gabinete a una fuente de 12V a 35V, y el simulador a la PC mediante USB micro.</p>
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-num">2</div>
                         <div>
-                            <h3>Activación del sistema</h3>
-                            <p>Encender el prototipo y verificar que el mecanismo de vibración funcione correctamente y sin anomalías en la alimentación.</p>
+                            <h3>Software</h3>
+                            <p>Abra la interfaz de control y acceda a la pestaña de ejecución.</p>
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-num">3</div>
                         <div>
-                            <h3>Simulación</h3>
-                            <p>Configurar la intensidad del movimiento para evaluar diferentes niveles de respuesta estructural y observar cómo se comporta la maqueta.</p>
+                            <h3>Conexión serial</h3>
+                            <p>Seleccione el puerto COM correspondiente y presione “Conectar” para enlazar con el controlador GRBL.</p>
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-num">4</div>
                         <div>
-                            <h3>Observación y análisis</h3>
-                            <p>Registrar los desplazamientos, deformaciones y estabilidad de la estructura para comparar resultados y validarlos con la teoría.</p>
+                            <h3>Ejecución de la simulación</h3>
+                            <p>Generel o cargue una simulación, luego ejecute el archivo .gcode o envíe comandos G-code directamente.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="manual-grid" style="margin-top: 22px;">
+            <section class="manual-grid">
                 <article class="manual-card">
-                    <h3>Recomendaciones</h3>
-                    <p>
-                        No sobrecargar la estructura durante la prueba, evitar golpes externos y mantener el sistema conectado con la configuración correcta.
-                        La observación constante permite detectar puntos críticos y mejorar la interpretación del comportamiento sísmico.
-                    </p>
+                    <h3>Montaje de las maquetas</h3>
+                    <p>Se utilizan ganchos y una plataforma móvil superior con perforaciones. Se colocan los ganchos sobre las columnas inferiores, se fija la maqueta y se ajustan los tornillos parker para asegurar la estructura antes de la simulación.</p>
                 </article>
 
                 <article class="manual-card">
-                    <h3>Presentación del proyecto</h3>
-                    <p>
-                        Para la exposición, se recomienda explicar la idea del proyecto, la maqueta, la simulación del movimiento y los resultados obtenidos,
-                        destacando el trabajo colaborativo y el enfoque técnico de la propuesta.
-                    </p>
+                    <h3>Consideraciones y precauciones</h3>
+                    <ul>
+                        <li>Asegurar la correcta fijación de la maqueta antes de iniciar el movimiento.</li>
+                        <li>No exceder los límites físicos del sistema.</li>
+                        <li>Usar la tensión de alimentación correcta (12V a 35V).</li>
+                        <li>Detener el uso si hay sobrecalentamiento.</li>
+                        <li>Lubricar las varillas si el movimiento presenta trabas.</li>
+                        <li>Desconectar por software antes de retirar el USB.</li>
+                    </ul>
                 </article>
             </section>
 
