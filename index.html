@@ -5,233 +5,456 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.I.S.M.A. - Simulador Interactivo de Sismos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Logo 3.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="Logo 3.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GX5Y7WRWGN');
+    </script>
 
-    gtag('config', 'G-GX5Y7WRWGN');
-  </script>
-    
+    <style>
+        :root {
+            --navy: #041f31;
+            --navy-2: #0a2a40;
+            --orange: #ee7e2f;
+            --orange-strong: #f58131;
+            --orange-soft: #ff9c3d;
+            --white: #f5f7fb;
+            --muted: #dfe7f1;
+            --bg: #dfe2e6;
+            --shadow: rgba(3, 19, 31, 0.2);
+            --line: rgba(255,255,255,0.13);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page-shell {
+            width: min(1360px, calc(100% - 48px));
+            margin: 52px auto;
+            background: var(--navy);
+            box-shadow: 0 20px 30px var(--shadow);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.08fr 1.18fr;
+            align-items: center;
+            min-height: 820px;
+            padding: 30px 42px 20px 42px;
+            background: linear-gradient(90deg, rgba(4,31,49,1) 0%, rgba(4,31,49,1) 55%, rgba(4,31,49,1) 100%);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -130px;
+            bottom: -90px;
+            width: 800px;
+            height: 620px;
+            background: var(--orange);
+            border-radius: 300px 0 0 300px;
+            z-index: 0;
+        }
+
+        .hero-left,
+        .hero-right {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.98);
+            margin-bottom: 18px;
+            box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-badge img {
+            width: 88%;
+            height: 88%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .brand-badge::before {
+            content: "SISMA";
+            position: absolute;
+            inset: auto 0 12px 0;
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: #0d2031;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .big-title {
+            margin: 0;
+            font-size: clamp(5rem, 11vw, 13rem);
+            line-height: 0.9;
+            font-weight: 900;
+            letter-spacing: -0.07em;
+            color: #f4f6fa;
+        }
+
+        .hero-copy {
+            margin-top: 28px;
+            max-width: 700px;
+            font-size: clamp(2.1rem, 3vw, 4rem);
+            line-height: 1.08;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--white);
+        }
+
+        .cta-wrap {
+            margin-top: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--orange);
+            border-radius: 28px;
+            padding: 0 28px;
+            min-height: 74px;
+            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .cta-wrap:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-wrap a {
+            font-size: clamp(1.3rem, 2vw, 2.2rem);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .team-list {
+            margin-top: 42px;
+            margin-bottom: 20px;
+            max-width: 760px;
+        }
+
+        .team-list h3 {
+            margin: 0;
+            font-size: clamp(1.5rem, 2.7vw, 3.3rem);
+            line-height: 1.15;
+            letter-spacing: -0.06em;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .school-line {
+            margin-top: 26px;
+            font-size: clamp(1.35rem, 2vw, 2.5rem);
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: var(--white);
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 760px;
+        }
+
+        .photo-scene {
+            position: relative;
+            width: min(760px, 100%);
+            height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-scene::before {
+            content: "";
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 92%;
+            height: 82%;
+            background: linear-gradient(180deg, #d15b00, #f27720);
+            border-radius: 52% 0 0 52%;
+            box-shadow: inset 0 0 0 12px rgba(255,255,255,0.05);
+        }
+
+        .photo-frame {
+            position: relative;
+            z-index: 1;
+            width: min(620px, 84%);
+            aspect-ratio: 1.1 / 1;
+            overflow: hidden;
+            border-radius: 48% 0 0 48%;
+            border: 16px solid rgba(255,255,255,0.12);
+            box-shadow: 0 18px 24px rgba(0,0,0,0.15);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.1) contrast(1.08);
+        }
+
+        .photo-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg, rgba(241,120,32,0.9), rgba(177,74,16,0.9)),
+                linear-gradient(180deg, rgba(24,38,53,1), rgba(24,38,53,0.3));
+            position: relative;
+        }
+
+        .photo-fallback::before,
+        .photo-fallback::after {
+            content: "";
+            position: absolute;
+            inset: 25% 18% 20% 18%;
+            border-radius: 50%;
+            border: 12px solid rgba(255,255,255,0.68);
+        }
+
+        .photo-fallback::after {
+            inset: auto 20% 10% 20%;
+            height: 20%;
+            border-radius: 18px;
+            border: 0;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .photo-frame.has-fallback .photo-fallback {
+            display: block;
+        }
+
+        .page-number {
+            position: absolute;
+            right: 42px;
+            bottom: 18px;
+            z-index: 2;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.78);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            padding: 26px 42px 44px;
+            background: rgba(8, 31, 46, 0.9);
+            border-top: 1px solid var(--line);
+        }
+
+        .mini-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 24px 20px;
+            min-height: 180px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 12px;
+            font-size: 1.5rem;
+            letter-spacing: -0.04em;
+        }
+
+        .mini-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1100px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-bottom: 60px;
+            }
+
+            .hero::after {
+                right: -140px;
+                bottom: -40px;
+                width: 740px;
+                height: 510px;
+            }
+
+            .hero-right {
+                min-height: 440px;
+                margin-top: 20px;
+            }
+
+            .photo-scene {
+                width: min(620px, 100%);
+                height: 500px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-shell {
+                width: min(100%, calc(100% - 18px));
+                margin: 16px auto;
+            }
+
+            .hero {
+                padding: 18px 18px 18px;
+                min-height: auto;
+            }
+
+            .brand-badge {
+                width: 112px;
+                height: 112px;
+            }
+
+            .big-title {
+                font-size: 4.5rem;
+            }
+
+            .hero-copy {
+                font-size: 2.1rem;
+            }
+
+            .team-list h3 {
+                font-size: 2.1rem;
+            }
+
+            .school-line {
+                font-size: 1.3rem;
+            }
+
+            .cta-wrap {
+                width: 100%;
+                min-height: 60px;
+            }
+
+            .content-grid {
+                padding: 18px 18px 26px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-    <header class="site-header">
-        <div class="brand">
-            <img src="Logo 3.png" alt="Logo S.I.S.M.A." class="brand-logo">
-            <div class="brand-text">
-                <h1>S.I.S.M.A.</h1>
-                <p class="tag">Simulador Interactivo de Sismos</p>
-            </div>
-        </div>
-        <nav class="main-nav">
-            <a href="#inicio">Inicio</a>
-            <a href="#que-es">¿Qué es?</a>
-            <a href="#caracteristicas">Características</a>
-            <a href="#desarrollo">Desarrollo</a>
-            <a href="#equipo">Equipo</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
-
-    <main>
-        <section id="inicio" class="hero">
+    <div class="page-shell">
+        <header class="hero" id="inicio">
             <div class="hero-left">
-                <h2>SISMA</h2>
-                <p class="lead">Simulador interactivo para pruebas de maquetas y análisis estructural. Precisión, registro de datos y control remoto.</p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="#que-es">Descubre S.I.S.M.A.</a>
-                    <a class="btn btn-ghost" href="#desarrollo">Ver detalles técnicos</a>
+                <div class="brand-badge">
+                    <img src="Logo 3.png" alt="Logo SISMA">
+                </div>
+
+                <h1 class="big-title">SISMA</h1>
+
+                <div class="hero-copy">
+                    Simulador de sismos para maquetas y análisis
+                </div>
+
+                <div class="cta-wrap">
+                    <a href="#equipo">Integrantes</a>
+                </div>
+
+                <div class="team-list">
+                    <h3>Rodrigo Ezequiel Terán<br>
+                        Dante Alejandro Navarrete<br>
+                        Tiziano Nehuén Paglia Vucassovich</h3>
+                </div>
+
+                <div class="school-line">
+                    E.E.S.T N° 6°2 Electrónica
                 </div>
             </div>
+
             <div class="hero-right">
-                <img src="Prototipo.png" alt="Simulador de Sismos" class="hero-img">
-            </div>
-        </section>
-
-        <section id="que-es" class="panel">
-            <div class="panel-inner">
-                <h2>¿Qué es S.I.S.M.A.?</h2>
-                <p class="muted">Una plataforma compacta para simular movimientos sísmicos y evaluar el comportamiento de maquetas bajo carga dinámica.</p>
-                <ul class="features-list">
-                    <li>Simulación precisa basada en modelos empíricos</li>
-                    <li>Control total de parámetros (intensidad, frecuencia, duración)</li>
-                    <li>Registro y exportación de datos vía Wi‑Fi</li>
-                    <li>Interfaz local y acceso remoto</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="caracteristicas" class="panel">
-            <div class="panel-inner">
-                <h2>Características</h2>
-                <div class="grid cols-3">
-                    <div class="card">
-                        <h3>Simulación controlada</h3>
-                        <p class="muted">Parámetros finos para replicar distintos escenarios sísmicos.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Control remoto</h3>
-                        <p class="muted">Wi‑Fi integrado para monitoreo y control desde web o app.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Registro de datos</h3>
-                        <p class="muted">Exporta resultados para análisis y comparativas.</p>
+                <div class="photo-scene">
+                    <div class="photo-frame" id="teamPhoto">
+                        <img src="foto_contaco.jpg" alt="Equipo SISMA" onerror="this.parentElement.classList.add('has-fallback'); this.style.display='none';">
+                        <div class="photo-fallback" aria-hidden="true"></div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="desarrollo" class="panel">
-            <div class="panel-inner">
-                <h2>Desarrollo técnico</h2>
-                    <p class="lead">Una plataforma de simulación sismica diseñada para evaluar la estabilidad estructural con control preciso y monitoreo en tiempo real.</p>
-                
-                    <div class="grid cols-2">
-                        <div class="card tech-card">
-                            <h4>Base fija</h4>
-                            <ul class="tech-list">
-                                <li>Estructura en madera 40 * 20</li>
-                                <li>Diseño modular para fácil mantenimiento</li>
-                                <li>Pintado y barnizado para mejor estética</li>
-                            </ul>
-                        </div>
-                    
-                        <div class="card tech-card">
-                            <h4>Sistema de movimiento</h4>
-                            <ul class="tech-list">
-                                <li>Motor NEMA 17 de alto torque (1.8° por paso)</li>
-                                <li>Sistema de poleas GT2 para transmisión precisa</li>
-                                <li>Plataforma móvil sobre guías lineales con rodamientos LM10uu</li>
-                                <li>Sensor de límite para seguridad y homming</li>
-                            </ul>
-                        </div>
+            <div class="page-number">1</div>
+        </header>
 
-                        <div class="card tech-card">
-                            <h4>Control electrónico</h4>
-                            <ul class="tech-list">
-                                <li>ESP32-DevKit1 (dual-core, WiFi+Bluetoth)</li>
-                                <li>Driver DVR8825 para control preciso del motor</li>
-                                <li>Display OLED para visualización de datos</li>
-                                <li>Shield electrónico para integración de toda la electrónica</li>
-                            </ul>
-                        </div>
+        <main>
+            <section class="content-grid">
+                <article class="mini-card">
+                    <h4>¿Qué es?</h4>
+                    <p>SISMA es un proyecto de simulación sísmica orientado a reproducir movimientos de suelo en maquetas y evaluar su comportamiento estructural bajo cargas dinámicas.</p>
+                </article>
 
-                        <div class="card tech-card">
-                            <h4>Software y conectividad</h4>
-                            <ul class="tech-list">
-                                <li>Sensado de datos y almacenamiento en la nube</li>
-                                <li>Creación y ejecución de las simulaciones sismológicas</li>
-                                <li>Exportación de sensado en formato CSV</li>
-                            </ul>
-                        </div>
-                    </div>
+                <article class="mini-card">
+                    <h4>Desarrollo</h4>
+                    <p>Se combina una estructura modular, un sistema de movimiento controlado, electrónica de precisión y conectividad Wi‑Fi para monitorear, registrar y analizar datos en tiempo real.</p>
+                </article>
 
-                    <div class="tech-specs">
-                        <h4>Especificaciones técnicas</h4>
-                        <div class="grid cols-3">
-                            <div class="spec-item">
-                                <span class="spec-label">Rango de frecuencia</span>
-                                <span class="spec-value">0.1 - 10 Hz</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Amplitud máxima</span>
-                                <span class="spec-value">±100 mm</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Carga máxima</span>
-                                <span class="spec-value">3 kg</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Precisión</span>
-                                <span class="spec-value">0.05 mm</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Alimentación</span>
-                                <span class="spec-value">8V-35V DC / 5A</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Conectividad</span>
-                                <span class="spec-value">WiFi 2.4GHz</span>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="equipo" class="panel team-panel">
-            <div class="panel-inner">
-                <h2>Equipo</h2>
-                <div class="team-grid">
-                    <div class="member">
-                        <img src="foto_contaco.jpg" alt="Dante Alejandro Navarrete">
-                        <a href="https://www.instagram.com/dante.nvrrte/" target="_blank"><h3>Dante Alejandro Navarrete</h3></a>
-                        <p class="role">Electrónico</p>
-                        <p class="muted">Experiencia en el análisis de circuitos y en el cálculo. Diseñador de esquemáticos.</p>
-                    </div>
-                    <div class="member">
-                        <img src="foto_contaco.jpg" alt="David Agustin Melnik">
-                        <a href="https://www.instagram.com/melnik_d.44/" target="_blank"><h3>David Agustin Melnik</h3></a>
-                        <p class="role">Administrativo</p>
-                        <p class="muted">Encargado de la administración y registro del proyecto y CM de las redes sociales.</p>
-                    </div>
-                    <div class="member">
-                        <img src="foto_contaco.jpg" alt="Rodrigo Ezequiel Teran">
-                        <a href="https://www.instagram.com/rodri.dkl/" target="_blank"><h3>Rodrigo Ezequiel Teran</h3></a>
-                        <p class="role">Montaje y Armado</p>
-                        <p class="muted">Montaje de piezas, armado, corte, ensamblado, pintura y soldadura.</p>
-                    </div>
-                    <div class="member">
-                        <img src="foto_contaco.jpg" alt="Tiziano Nehuén Paglia Vucassovich">
-                        <a href="https://www.instagram.com/nehu.pag/" target="_blank"><h3>Tiziano Nehuén Paglia Vucassovich</h3></a>
-                        <p class="role">Programación y diseño</p>
-                        <p class="muted">Programación de microcontroladores, PCBs y desarrollo de apps/webs.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-       <section id="contacto" class="panel contact-panel">
-            <div class="panel-inner">
-                <h2>Contacto</h2>
-                <div class="contact-grid">
-                    <a class="contact-item" href="https://wa.me/+5491134313852" target="_blank">
-                        <img src="WhatsApp.svg.webp" alt="WhatsApp">
-                        <div>
-                            <h4>Chatea con nosotros</h4>
-                            <p class="muted">WhatsApp disponible para consultas rápidas.</p>
-                        </div>
-                    </a>
-                    <a class="contact-item" href="https://www.instagram.com/electromentor_/" target="_blank">
-                        <img src="instagram.png" alt="Instagram">
-                        <div>
-                            <h4>Instagram</h4>
-                            <p class="muted">Sigue nuestro trabajo y novedades.</p>
-                        </div>
-                    </a>
-                    <div class="contact-item">
-                        <img src="mp.jpg" alt="Mercado Pago">
-                        <div>
-                            <h4>Donaciones</h4>
-                            <p class="muted">Aceptamos donaciones vía transferencia: <strong>nehu.paglia.mp</strong> (motivo: "Donacion SISMA").</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </section>
-
-    <footer>
-        <p>&copy; 2025 S.I.S.M.A. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
+                <article class="mini-card">
+                    <h4>Aplicación</h4>
+                    <p>Permite estudiar respuesta estructural, validar diseños, ajustar parámetros de frecuencia y amplitud, y exportar resultados útiles para comparación y análisis técnico.</p>
+                </article>
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>
