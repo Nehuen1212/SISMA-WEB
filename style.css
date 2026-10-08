@@ -4,12 +4,14 @@
     --navy-soft: #0d2d42;
     --orange: #ef7c2d;
     --orange-deep: #d8661b;
+    --orange-soft: #ffb36a;
     --white: #f4f7fb;
     --muted: rgba(255, 255, 255, 0.76);
     --panel: rgba(255, 255, 255, 0.04);
     --line: rgba(255, 255, 255, 0.12);
     --shadow: rgba(3, 19, 31, 0.22);
     --bg: #dfe2e6;
+    --glow: rgba(239, 124, 45, 0.32);
 }
 
 * {
@@ -94,8 +96,9 @@ a {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.98);
     margin-bottom: 18px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 0 0 8px rgba(255, 255, 255, 0.06);
     overflow: hidden;
+    animation: floatBadge 4.5s ease-in-out infinite;
 }
 
 .brand-badge img {
@@ -105,6 +108,11 @@ a {
     border-radius: 50%;
 }
 
+@keyframes floatBadge {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
 .eyebrow,
 .kicker {
     display: inline-block;
@@ -112,7 +120,7 @@ a {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.7);
-    font-weight: 700;
+    font-weight: 900;
 }
 
 .big-title {
@@ -142,6 +150,7 @@ a {
 }
 
 .button {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -152,29 +161,51 @@ a {
     font-weight: 800;
     letter-spacing: -0.04em;
     text-transform: uppercase;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.14);
 }
 
-.button:hover {
-    transform: translateY(-2px);
+.button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.38) 48%, transparent 100%);
+    transform: translateX(-140%);
+    transition: transform 0.7s ease;
+    z-index: -1;
+}
+
+.button:hover,
+.button:focus-visible {
+    transform: translateY(-3px) scale(1.01);
+    filter: brightness(1.06);
+    box-shadow: 0 18px 26px rgba(0, 0, 0, 0.18), 0 0 24px rgba(255, 179, 106, 0.2);
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+    transform: translateX(140%);
 }
 
 .button.primary {
-    background: var(--orange);
+    background: linear-gradient(135deg, var(--orange-soft), var(--orange) 55%, var(--orange-deep));
     color: var(--white);
-    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08), 0 16px 28px rgba(239, 124, 45, 0.26);
 }
 
 .button.secondary {
     border: 1px solid rgba(255, 255, 255, 0.18);
     color: var(--white);
-    background: rgba(255, 255, 255, 0.02);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
 }
 
 .button.tertiary {
-    background: linear-gradient(135deg, #f7f8fb, #dfe8f7);
+    background: linear-gradient(135deg, #f7f8fb, #dfe8f7 50%, #cbd9f4);
     color: var(--navy);
     border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 16px 28px rgba(97, 126, 170, 0.18);
 }
 
 .team-summary {
@@ -236,8 +267,14 @@ a {
     overflow: hidden;
     border-radius: 50%;
     border: 16px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15), 0 0 32px rgba(239, 124, 45, 0.15);
     background: rgba(255, 255, 255, 0.15);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.photo-frame:hover {
+    transform: scale(1.02) rotate(-1deg);
+    box-shadow: 0 22px 34px rgba(0, 0, 0, 0.18), 0 0 32px rgba(239, 124, 45, 0.2);
 }
 
 .photo-frame img {
@@ -245,6 +282,11 @@ a {
     height: 100%;
     object-fit: cover;
     filter: saturate(1.1) contrast(1.08);
+    transition: transform 0.35s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.05);
 }
 
 .page-number {
@@ -304,7 +346,19 @@ a {
     border: 1px solid var(--line);
     border-radius: 22px;
     padding: 24px 20px;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), 0 10px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.info-card:hover,
+.member-card:hover,
+.role-card:hover,
+.contact-card:hover,
+.tech-panel:hover,
+.prototype-panel:hover {
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(255, 179, 106, 0.38);
+    box-shadow: 0 18px 28px rgba(0, 0, 0, 0.14), 0 0 22px rgba(239, 124, 45, 0.12);
 }
 
 .info-card h3 {
@@ -437,6 +491,8 @@ a {
     border: 1px solid var(--line);
     border-radius: 24px;
     padding: 18px;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
 }
 
 .prototype-panel img {
@@ -444,6 +500,12 @@ a {
     border-radius: 18px;
     object-fit: cover;
     min-height: 290px;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.prototype-panel:hover img {
+    transform: scale(1.02);
+    filter: saturate(1.1) contrast(1.06);
 }
 
 .contact-grid {
@@ -462,6 +524,11 @@ a {
     height: 54px;
     object-fit: contain;
     border-radius: 12px;
+    transition: transform 0.25s ease;
+}
+
+.contact-card:hover img {
+    transform: rotate(-6deg) scale(1.08);
 }
 
 .contact-card h3 {
@@ -475,6 +542,12 @@ a {
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.02em;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(239, 124, 45, 0.04));
+}
+
+:focus-visible {
+    outline: 3px solid rgba(255, 179, 106, 0.9);
+    outline-offset: 3px;
 }
 
 @media (max-width: 1100px) {
