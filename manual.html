@@ -7,7 +7,7 @@
     <title>Manual de usuario | SISMA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --navy: #061b2a;
@@ -24,25 +24,26 @@
         html { scroll-behavior: smooth; }
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background: radial-gradient(circle at top, #112f43 0%, #081d2a 36%, #050d14 100%);
             color: var(--white);
         }
         a { color: inherit; text-decoration: none; }
         h1, h2, h3, p { margin: 0; }
+        h1, h2, h3 { font-family: 'Sora', sans-serif; letter-spacing: 0; }
 
         .manual-shell {
-            width: min(1200px, calc(100% - 32px));
-            margin: 36px auto;
+            width: min(1200px, calc(100% - 40px));
+            margin: clamp(16px, 4vw, 40px) auto;
             background: var(--navy);
             border: 1px solid var(--line);
-            border-radius: 26px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 24px 48px rgba(4, 31, 49, 0.18);
         }
 
         .manual-header {
-            padding: 40px 42px 18px;
+            padding: clamp(24px, 5vw, 48px) clamp(20px, 5vw, 52px) 24px;
             border-bottom: 1px solid var(--line);
             background: linear-gradient(135deg, rgba(239,124,45,0.10), rgba(255,255,255,0.02));
         }
@@ -91,7 +92,7 @@
         .manual-title {
             font-size: clamp(2.8rem, 6vw, 5.2rem);
             line-height: 0.92;
-            letter-spacing: -0.06em;
+            letter-spacing: 0;
             font-weight: 900;
             margin-bottom: 12px;
         }
@@ -119,13 +120,13 @@
         .manual-card {
             background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 22px;
+            border-radius: 12px;
             padding: 24px 22px;
         }
 
         .manual-card h3 {
             font-size: 1.45rem;
-            letter-spacing: -0.04em;
+            letter-spacing: 0;
             margin-bottom: 12px;
         }
 
@@ -154,7 +155,7 @@
             align-items: start;
             padding: 16px 18px;
             border: 1px solid var(--line);
-            border-radius: 18px;
+            border-radius: 12px;
             background: rgba(255,255,255,0.02);
         }
 
@@ -194,6 +195,38 @@
             .topbar {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            .manual-body {
+                padding-top: 22px;
+                padding-bottom: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .manual-shell {
+                width: calc(100% - 20px);
+                margin: 10px auto;
+                border-radius: 12px;
+            }
+            .manual-header, .manual-body {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            .manual-title {
+                font-size: clamp(2.35rem, 12vw, 3.2rem);
+                line-height: 1;
+            }
+            .manual-card {
+                padding: 18px 16px;
+            }
+            .step {
+                grid-template-columns: 40px minmax(0, 1fr);
+                gap: 12px;
+                padding: 14px;
+            }
+            .step-num {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
