@@ -821,20 +821,20 @@ h4 {
 .photo-scene {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 0.9;
+    aspect-ratio: 1;
 }
 
 .photo-scene::before {
     right: auto;
     left: 50%;
-    width: 62%;
+    width: 94%;
     height: auto;
     transform: translate(-50%, -50%);
     aspect-ratio: 1;
 }
 
 .photo-frame {
-    width: min(86%, 610px);
+    width: min(82%, 610px);
     border-width: clamp(8px, 1.3vw, 16px);
 }
 
@@ -903,6 +903,71 @@ h4 {
     min-height: 0;
     aspect-ratio: 4 / 3;
     border-radius: 8px;
+    animation: prototypePhotoMotion 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.prototype-panel {
+    overflow: hidden;
+}
+
+.prototype-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 2px 2px;
+}
+
+.prototype-cta strong,
+.prototype-cta small {
+    display: block;
+}
+
+.prototype-cta strong {
+    font-size: 1rem;
+}
+
+.prototype-cta small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+.prototype-cta-arrow {
+    display: grid;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 1.25rem;
+    transition: transform 0.25s ease;
+}
+
+.prototype-link:hover .prototype-cta-arrow,
+.prototype-link:focus-visible .prototype-cta-arrow {
+    transform: translate(2px, -2px);
+}
+
+.prototype-link:hover .prototype-panel img,
+.prototype-link:focus-visible .prototype-panel img {
+    animation: none;
+    transform: scale(1.035);
+}
+
+@keyframes prototypePhotoMotion {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.025);
+    }
 }
 
 .gallery-page {
@@ -1068,7 +1133,7 @@ h4 {
     }
 
     .photo-scene {
-        width: min(480px, 100%);
+        width: min(420px, 100%);
     }
 
     .main-content {
