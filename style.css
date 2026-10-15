@@ -800,12 +800,7 @@ h4 {
 }
 
 .hero::after {
-    right: -190px;
-    bottom: -200px;
-    width: min(64vw, 820px);
-    height: min(62vw, 720px);
-    border-radius: 50%;
-    opacity: 0.94;
+    display: none;
 }
 
 .big-title {
@@ -830,8 +825,11 @@ h4 {
 }
 
 .photo-scene::before {
+    right: auto;
+    left: 50%;
     width: 62%;
     height: auto;
+    transform: translate(-50%, -50%);
     aspect-ratio: 1;
 }
 
