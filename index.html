@@ -85,6 +85,40 @@
 
             <section class="section">
                 <div class="section-head">
+                    <p class="kicker">Contexto</p>
+                    <h2>Problemática, objetivos y público</h2>
+                </div>
+
+                <div class="info-grid">
+                    <article class="info-card">
+                        <h3>Problemática</h3>
+                        <p>No existe un simulador de terremotos a escala que sea accesible, económico y fácil de usar. En la mayoría de las escuelas y universidades los sismos se explican solo desde la teoría, y las instituciones no cuentan con un entorno para poner a prueba maquetas bajo condiciones sísmicas.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Objetivos específicos</h3>
+                        <ul>
+                            <li><strong>Simulación:</strong> base móvil con movimientos horizontales que imitan un sismo real.</li>
+                            <li><strong>Pruebas y análisis:</strong> sensado de aceleración e inclinación de la maqueta.</li>
+                            <li><strong>Control total:</strong> sismos personalizables y conversión de sismogramas reales.</li>
+                            <li><strong>Educativo:</strong> recurso didáctico para aulas técnicas y ferias.</li>
+                            <li><strong>Para arquitectos:</strong> capacitación para zonas de riesgo sísmico, como las cercanas a la cordillera.</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Público objetivo</h3>
+                        <ul>
+                            <li><strong>Educación técnica y universitaria:</strong> escuelas técnicas y facultades de ingeniería o arquitectura.</li>
+                            <li><strong>Arquitectura y construcción:</strong> pruebas de modelos a escala para detectar fallas de regularidad geométrica o torsión.</li>
+                            <li><strong>Investigación:</strong> experimentación técnica sobre sismos.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
                     <p class="kicker">Información</p>
                     <h2>Marco teórico</h2>
                 </div>
@@ -213,6 +247,57 @@
 
             <section class="section">
                 <div class="section-head">
+                    <p class="kicker">Prototipo</p>
+                    <h2>SISMA X1 en detalle</h2>
+                </div>
+
+                <div class="info-grid">
+                    <article class="info-card">
+                        <h3>Sistema mecánico</h3>
+                        <ul>
+                            <li>Base de madera de 50 × 20 cm como estructura principal.</li>
+                            <li>Transmisión por correa GT2 en configuración abierta con dos poleas de 16 dientes: una fija al eje del motor y otra suelta, en un soporte ajustable que regula la tensión.</li>
+                            <li>Los extremos de la correa se enganchan a un fijador atornillado a la mesa móvil.</li>
+                            <li>Guiado con dos varillas de acero de 10 mm y rodamientos lineales LM10UU.</li>
+                            <li>Soportes y piezas diseñados en 3D e impresos en PLA.</li>
+                            <li>Carrera útil de 150 mm.</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Electrónica y control</h3>
+                        <ul>
+                            <li>Movimiento unidireccional (un solo eje) con un ESP32 y firmware GRBL, con comandos similares a los de una máquina CNC.</li>
+                            <li>Motor NEMA 17 con driver DRV8825.</li>
+                            <li>PCB a medida y gabinete con comunicación serial por USB micro, etapas de potencia y conectores de finales de carrera.</li>
+                            <li>Alimentación por JACK DC de 12 V a 35 V.</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>SISMA CONTROL</h3>
+                        <ul>
+                            <li><strong>Generador de sismos:</strong> magnitud Richter (1 a 10), ciclos, amplitud (1 a 200 mm), velocidad y aceleración; exporta un archivo .gcode.</li>
+                            <li><strong>Ejecución:</strong> puerto COM, conexión, HOME, movimiento manual, carga, pausa, stop, reset, consola y desbloqueo.</li>
+                            <li><strong>Conversión de sismogramas:</strong> importa registros GeoCSV, muestra los datos y genera el .gcode.</li>
+                            <li><strong>G-code:</strong> <code>G1 X… F…</code> mueve la mesa, <code>G4 P…</code> pausa y <code>$H</code> hace el homing.</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Sistema de sensado</h3>
+                        <ul>
+                            <li>Hasta 4 sensores MPU6050 sobre la maqueta, leídos por I2C con un multiplexor TCA9548 y un ESP32.</li>
+                            <li>Calibración en reposo antes de cada simulación y lectura cada 10 ms: aceleración en X, Y y Z (m/s²) e inclinación en X e Y.</li>
+                            <li>Registro en un archivo .csv en tarjeta SD.</li>
+                            <li>Interfaz web con gráficos en tiempo real, aceleración máxima por eje, PGA e inclinación máxima, y descarga de simulaciones.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
                     <p class="kicker">Funcionamiento</p>
                     <h2>¿Cómo opera SISMA?</h2>
                 </div>
@@ -231,6 +316,27 @@
                     <article class="info-card">
                         <h3>3. Observación</h3>
                         <p>Se registran deformaciones, desplazamientos y estabilidad de la maqueta para identificar puntos críticos y evaluar la respuesta estructural.</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Fijación de la maqueta</h3>
+                        <ul>
+                            <li>Colocar ganchos sobre las columnas inferiores de la maqueta.</li>
+                            <li>Presentarla sobre la mesa haciendo coincidir los ganchos con los agujeros.</li>
+                            <li>Ajustar tornillos parker de 4 mm o 5 mm para fijar los ganchos.</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>Precauciones</h3>
+                        <ul>
+                            <li>Fijar bien la maqueta antes de mover el simulador.</li>
+                            <li>No exceder los límites físicos al crear simulaciones o mover el carro a mano.</li>
+                            <li>Usar la alimentación correcta (12 V a 35 V) y pausar si algo se sobrecalienta.</li>
+                            <li>Lubricar las varillas con grasa si el movimiento se traba.</li>
+                            <li>Desconectar por software antes de desenchufar el USB.</li>
+                            <li>En estado ALARM: desbloquear por software y, si no alcanza, hacer un soft reset.</li>
+                        </ul>
                     </article>
                 </div>
             </section>

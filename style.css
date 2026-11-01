@@ -424,6 +424,31 @@ a {
     font-size: 0.98rem;
 }
 
+.info-card ul {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 8px;
+}
+
+.info-card li {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.info-card li strong {
+    color: var(--white);
+}
+
+.info-card code {
+    padding: 1px 5px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--orange-soft);
+    font-size: 0.85em;
+}
+
 .team-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }

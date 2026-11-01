@@ -351,45 +351,6 @@ dd {
     color: var(--white);
 }
 
-.sim-doc {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.sim-doc p,
-.sim-doc li {
-    color: var(--muted);
-    font-size: 0.92rem;
-    line-height: 1.55;
-}
-
-.sim-doc ul {
-    margin: 0;
-    padding-left: 18px;
-    display: grid;
-    gap: 8px;
-}
-
-.sim-doc li strong {
-    color: var(--white);
-}
-
-.sim-doc code {
-    padding: 1px 5px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--orange-soft);
-    font-size: 0.85em;
-}
-
-@media (max-width: 1000px) {
-    .sim-doc {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 1000px) {
     .sim-main {
         grid-template-columns: 1fr;
