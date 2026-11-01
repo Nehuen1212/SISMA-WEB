@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulador 2D interactivo del prototipo SISMA X1: reproduce un G-code de sismo sobre la mesa vibratoria.">
+    <title>SISMA | Simulador interactivo</title>
+    <link rel="icon" href="Logo 3.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="simulador.css">
+</head>
+
+<body>
+    <div class="sim-shell">
+        <a class="sim-back" href="index.html">← Volver al inicio</a>
+
+        <header class="sim-header">
+            <p class="kicker">Simulador</p>
+            <h1>Simulador interactivo SISMA X1</h1>
+            <p>Vista superior 2D del prototipo. Cargá un archivo G-code de sismo y mirá cómo se mueve la mesa en tiempo real.</p>
+        </header>
+
+        <main class="sim-main">
+            <section class="sim-card sim-stage-card" id="dropzone">
+                <div class="stage-wrap">
+                    <canvas id="stage" role="img" aria-label="Vista superior 2D del prototipo SISMA X1 con la mesa móvil"></canvas>
+                    <div id="tip" class="sim-tip" hidden></div>
+                </div>
+
+                <div class="sim-hud">
+                    <div class="hud-tile"><span>Tiempo</span><strong id="hud-time">0.00 s</strong></div>
+                    <div class="hud-tile"><span>Posición X</span><strong id="hud-x">75.00 mm</strong></div>
+                    <div class="hud-tile"><span>Desplazamiento</span><strong id="hud-d">0.00 mm</strong></div>
+                    <div class="hud-tile"><span>Velocidad</span><strong id="hud-v">0.0 mm/s</strong></div>
+                    <div class="hud-tile"><span>Línea G-code</span><strong id="hud-line">-</strong></div>
+                </div>
+
+                <div class="sim-controls">
+                    <button id="btn-play" class="sim-btn primary" type="button">▶ Reproducir</button>
+                    <button id="btn-reset" class="sim-btn" type="button">⟲ Reiniciar</button>
+                    <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Posición en el tiempo">
+                    <div class="sim-speed" role="group" aria-label="Velocidad de reproducción">
+                        <button type="button" data-speed="0.1">0.1×</button>
+                        <button type="button" data-speed="0.25">0.25×</button>
+                        <button type="button" data-speed="0.5">0.5×</button>
+                        <button type="button" data-speed="1" class="active">1×</button>
+                        <button type="button" data-speed="2">2×</button>
+                        <button type="button" data-speed="5">5×</button>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="sim-side">
+                <section class="sim-card">
+                    <h2>Programa</h2>
+                    <div class="sim-file-row">
+                        <label class="sim-btn primary" for="file">Cargar G-code</label>
+                        <input id="file" type="file" accept=".gcode,.nc,.ngc,.gc,.txt">
+                        <button id="btn-demo" class="sim-btn" type="button">Demo</button>
+                    </div>
+                    <p class="sim-hint">También podés arrastrar el archivo sobre el simulador.</p>
+                    <p id="msg" class="sim-msg" role="status" hidden></p>
+                    <dl class="sim-info">
+                        <div><dt>Archivo</dt><dd id="info-name">-</dd></div>
+                        <div><dt>Duración</dt><dd id="info-dur">-</dd></div>
+                        <div><dt>Movimientos</dt><dd id="info-moves">-</dd></div>
+                        <div><dt>Rango X</dt><dd id="info-range">-</dd></div>
+                        <div><dt>Amplitud máx.</dt><dd id="info-amp">-</dd></div>
+                        <div><dt>Velocidad máx.</dt><dd id="info-vmax">-</dd></div>
+                    </dl>
+                </section>
+
+                <section class="sim-card">
+                    <h2>Opciones</h2>
+                    <label class="sim-check"><input id="opt-loop" type="checkbox" checked> Repetir al terminar</label>
+                    <label class="sim-check"><input id="opt-transparent" type="checkbox"> Mesa transparente</label>
+                    <label class="sim-check"><input id="opt-limits" type="checkbox" checked> Mostrar límites de carrera</label>
+                </section>
+
+                <section class="sim-card">
+                    <h2>G-code en ejecución</h2>
+                    <div id="gcode-view" class="gcode-view" aria-live="off"></div>
+                </section>
+            </aside>
+
+            <section class="sim-card sim-chart-card">
+                <h2>Sismograma <small>desplazamiento de la mesa respecto del centro (mm)</small></h2>
+                <canvas id="chart" role="img" aria-label="Gráfico de desplazamiento en el tiempo; clic para moverse en la reproducción"></canvas>
+            </section>
+        </main>
+    </div>
+
+    <script src="simulador.js"></script>
+</body>
+
+</html>
