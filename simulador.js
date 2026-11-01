@@ -9,9 +9,9 @@
     const DEFAULT_FEED = 2000;  // mm/min si el G-code no define F
     const MAX_BYTES = 20 * 1024 * 1024;
 
-    const VW = 580, VH = 340, CX = 290, CY = 190;
-    const BASE = { x: 20, y: 50, w: 540, h: 280 };
-    const ROD_DY = 85, PLATE_H = 95, BLOCK_DX = 62;
+    const VW = 580, VH = 260, CX = 290, CY = 150;
+    const BASE = { x: 40, y: 50, w: 500, h: 200 };
+    const ROD_DY = 70, PLATE_H = 85, BLOCK_DX = 55;
     const MOTOR_PX = 490, IDLER_PX = 100;
     const SUPPORT_X = [82, 455];
     const VIEW_LINES = 13;
@@ -197,21 +197,21 @@
         add('Mesa vibratoria', `Plataforma donde se fija la maqueta. Se desplaza sobre el eje X dentro de una carrera de ${TRAVEL} mm.`,
             px - PLATE_H, CY - PLATE_H, px + PLATE_H, CY + PLATE_H);
         for (const s of [-1, 1]) for (const b of [-1, 1]) {
-            add('Bloque deslizante', 'Soporte con rulemán lineal: guía la mesa sobre la varilla.',
+            add('Bloque deslizante', 'Rodamiento lineal LM10UU: guía la mesa sobre la varilla con baja fricción.',
                 px + b * BLOCK_DX - 14, CY + s * ROD_DY - 14, px + b * BLOCK_DX + 14, CY + s * ROD_DY + 14);
         }
-        if (ui.ghost.checked) add('Sujeción de la correa', 'Pieza bajo la mesa que abraza la correa: la mesa se mueve junto con ella.', px - 15, CY - 8, px + 15, CY + 8);
-        add('Polea GT2 del motor', 'Fija al eje del motor: arrastra la correa.', MOTOR_PX - 9, CY - 7, MOTOR_PX + 9, CY + 7);
-        add('Polea GT2 loca', 'Gira libre en el extremo opuesto y mantiene la correa tensa.', IDLER_PX - 9, CY - 7, IDLER_PX + 9, CY + 7);
-        add('Motor paso a paso NEMA 17', 'Gira la polea siguiendo los pasos que ordena el G-code.', 469, 126, 511, 166);
-        add('Soporte del motor', 'Pieza impresa que sostiene el motor.', 462, 166, 518, 182);
-        add('Soporte de la polea loca', 'Sostiene el eje de la polea que gira libre.', 82, 150, 118, 182);
-        add('Correa GT2', 'Correa dentada abierta bajo la mesa: transforma el giro del motor en movimiento lineal.', IDLER_PX, CY - 4, MOTOR_PX, CY + 4);
+        if (ui.ghost.checked) add('Fijador de correa', 'Atornillado a la mesa: sujeta los dos extremos de la correa abierta, por lo que la mesa se mueve con ella.', px - 15, CY - 8, px + 15, CY + 8);
+        add('Polea GT2 del motor', 'Polea de 16 dientes fija al eje del motor: arrastra la correa.', MOTOR_PX - 9, CY - 7, MOTOR_PX + 9, CY + 7);
+        add('Polea GT2 loca', 'Polea de 16 dientes que gira libre como punto de retorno de la correa.', IDLER_PX - 9, CY - 7, IDLER_PX + 9, CY + 7);
+        add('Motor paso a paso NEMA 17', 'Se controla con un driver DRV8825 desde el ESP32 con firmware GRBL.', 469, CY - 64, 511, CY - 24);
+        add('Soporte del motor', 'Pieza impresa en PLA que sostiene el motor.', 462, CY - 24, 518, CY - 8);
+        add('Soporte ajustable de la polea loca', 'Permite regular la tensión de la correa.', 82, CY - 40, 118, CY - 8);
+        add('Correa GT2', 'Configuración abierta: convierte el giro del motor en desplazamiento lineal de la mesa.', IDLER_PX, CY - 4, MOTOR_PX, CY + 4);
         for (const s of [-1, 1]) for (const sx of SUPPORT_X) {
             add('Soporte de varilla', 'Fija los extremos de la varilla guía a la base.', sx - 8, CY + s * ROD_DY - 17, sx + 8, CY + s * ROD_DY + 17);
         }
-        for (const s of [-1, 1]) add('Varilla guía', 'Varilla rectificada de 8 mm sobre la que desliza la mesa.', SUPPORT_X[0], CY + s * ROD_DY - 5, SUPPORT_X[1], CY + s * ROD_DY + 5);
-        add('Base', 'Tablero rígido donde se montan todos los componentes.', BASE.x, BASE.y, BASE.x + BASE.w, BASE.y + BASE.h);
+        for (const s of [-1, 1]) add('Varilla guía', 'Varilla de acero de 10 mm sobre la que desliza la mesa.', SUPPORT_X[0], CY + s * ROD_DY - 5, SUPPORT_X[1], CY + s * ROD_DY + 5);
+        add('Base', 'Base de madera de 50 × 20 cm donde se fijan todas las partes.', BASE.x, BASE.y, BASE.x + BASE.w, BASE.y + BASE.h);
         return P;
     }
 
@@ -261,12 +261,12 @@
     }
 
     function drawRod(c, y) {
-        const g = c.createLinearGradient(0, y - 4, 0, y + 4);
+        const g = c.createLinearGradient(0, y - 5, 0, y + 5);
         g.addColorStop(0, '#f7f9fb');
         g.addColorStop(0.45, '#aeb5bb');
         g.addColorStop(1, '#6f767c');
         c.fillStyle = g;
-        c.fillRect(SUPPORT_X[0], y - 4, SUPPORT_X[1] - SUPPORT_X[0], 8);
+        c.fillRect(SUPPORT_X[0], y - 5, SUPPORT_X[1] - SUPPORT_X[0], 10);
     }
 
     function drawSupport(c, x, y) {
@@ -312,32 +312,32 @@
         g.addColorStop(0.5, '#15181b');
         g.addColorStop(1, '#0b0c0e');
         c.fillStyle = g;
-        rr(c, 469, 126, 42, 40, 2); c.fill();
+        rr(c, 469, CY - 64, 42, 40, 2); c.fill();
         c.strokeStyle = 'rgba(255,255,255,0.1)';
         c.lineWidth = 1;
         c.beginPath();
-        for (let ly = 131; ly < 164; ly += 5) { c.moveTo(470, ly); c.lineTo(510, ly); }
+        for (let ly = CY - 59; ly < CY - 26; ly += 5) { c.moveTo(470, ly); c.lineTo(510, ly); }
         c.stroke();
         c.fillStyle = '#e9edf0';
-        c.fillRect(484, 128, 12, 8);
+        c.fillRect(484, CY - 62, 12, 8);
         c.fillStyle = '#e5322d';
-        rr(c, 462, 166, 56, 16, 3); c.fill();
+        rr(c, 462, CY - 24, 56, 16, 3); c.fill();
         c.strokeStyle = '#8f1b18'; c.stroke();
         c.fillStyle = '#7a1613';
-        for (const dx of [-24, 24]) { c.beginPath(); c.arc(MOTOR_PX + dx, 174, 1.8, 0, Math.PI * 2); c.fill(); }
+        for (const dx of [-24, 24]) { c.beginPath(); c.arc(MOTOR_PX + dx, CY - 16, 1.8, 0, Math.PI * 2); c.fill(); }
         c.fillStyle = '#9aa1a8';
-        c.beginPath(); c.arc(MOTOR_PX, 174, 5, 0, Math.PI * 2); c.fill();
+        c.beginPath(); c.arc(MOTOR_PX, CY - 16, 5, 0, Math.PI * 2); c.fill();
         drawPulley(c, MOTOR_PX);
     }
 
     function drawLeftEnd(c) {
         c.fillStyle = '#0f1113';
-        rr(c, 82, 150, 36, 32, 3); c.fill();
+        rr(c, 82, CY - 40, 36, 32, 3); c.fill();
         c.strokeStyle = '#59616a'; c.lineWidth = 1; c.stroke();
         c.fillStyle = '#c9ced3';
-        c.beginPath(); c.arc(IDLER_PX, 166, 6, 0, Math.PI * 2); c.fill();
+        c.beginPath(); c.arc(IDLER_PX, CY - 24, 6, 0, Math.PI * 2); c.fill();
         c.fillStyle = '#0f1113';
-        c.beginPath(); c.arc(IDLER_PX, 166, 2.5, 0, Math.PI * 2); c.fill();
+        c.beginPath(); c.arc(IDLER_PX, CY - 24, 2.5, 0, Math.PI * 2); c.fill();
         drawPulley(c, IDLER_PX);
     }
 

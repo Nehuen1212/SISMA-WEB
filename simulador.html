@@ -90,6 +90,116 @@
                 <h2>Sismograma <small>desplazamiento de la mesa respecto del centro (mm)</small></h2>
                 <canvas id="chart" role="img" aria-label="Gráfico de desplazamiento en el tiempo; clic para moverse en la reproducción"></canvas>
             </section>
+
+            <section class="sim-doc">
+                <article class="sim-card">
+                    <h2>Qué es SISMA</h2>
+                    <p>Simulador de sismos a escala para probar la estabilidad de maquetas: una base móvil reproduce movimientos sísmicos reales o generados y permite ver cómo resisten o fallan distintos diseños. Está pensado para estudiantes de arquitectura, escuelas técnicas, facultades y ferias de ciencias.</p>
+                </article>
+
+                <article class="sim-card">
+                    <h2>El problema que resuelve</h2>
+                    <p>No hay un simulador de terremotos a escala que sea accesible, económico y fácil de usar para estudiantes, docentes o profesionales de la construcción. En la mayoría de las escuelas y universidades los sismos se explican solo desde la teoría. SISMA lleva esa prueba a un equipo de escritorio de bajo costo.</p>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Objetivos</h2>
+                    <ul>
+                        <li><strong>Simulación:</strong> base móvil con movimientos horizontales que imitan un sismo real.</li>
+                        <li><strong>Pruebas y análisis:</strong> sensado de aceleración e inclinación de la maqueta.</li>
+                        <li><strong>Control total:</strong> sismos personalizables y conversión de sismogramas reales.</li>
+                        <li><strong>Educativo:</strong> recurso didáctico para aulas técnicas y ferias.</li>
+                        <li><strong>Para arquitectos:</strong> capacitación en zonas de riesgo sísmico, como la cordillera.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>El prototipo SISMA X1</h2>
+                    <p>Simulador unidireccional (un solo eje): un carro móvil controlado por un microcontrolador ESP32 con firmware GRBL, con comandos similares a los de una máquina CNC. Incluye una PCB a medida y un gabinete dedicado con las conexiones seriales, las etapas de potencia del motor y los conectores de finales de carrera.</p>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Sistema mecánico</h2>
+                    <ul>
+                        <li>Base de madera de 50 × 20 cm como estructura principal.</li>
+                        <li>Transmisión lineal por correa GT2 en configuración abierta, con dos poleas de 16 dientes: una fija al eje del motor y otra suelta que actúa como punto de retorno, montada en un soporte ajustable que regula la tensión.</li>
+                        <li>Los dos extremos de la correa se enganchan a un fijador de correa atornillado a la mesa móvil.</li>
+                        <li>Guiado con dos varillas de acero de 10 mm y rodamientos lineales LM10UU de baja fricción.</li>
+                        <li>Motor NEMA 17 con driver DRV8825.</li>
+                        <li>Soportes y piezas diseñados en 3D e impresos en PLA (fase de prototipado).</li>
+                        <li>Carrera útil de 150 mm (de 0 a 150 mm), con centro en 75 mm.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Electrónica y control</h2>
+                    <ul>
+                        <li>ESP32 con firmware GRBL: control preciso, repetible y escalable mediante G-code.</li>
+                        <li>PCB a medida y gabinete dedicado, con comunicación serial por USB micro, etapas de potencia para las bobinas del motor y finales de carrera para el homing <code>$H</code>.</li>
+                        <li>Alimentación por JACK DC de 12 V a 35 V (alimenta las salidas del motor).</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Programa de control (SISMA CONTROL)</h2>
+                    <ul>
+                        <li><strong>Generador de sismos:</strong> magnitud Richter (1 a 10), ciclos, amplitud (1 a 200 mm), velocidad y aceleración; exporta el .gcode.</li>
+                        <li><strong>Ejecución:</strong> selección de puerto COM, conectar, HOME (<code>$H</code>), movimiento manual X±, cargar, ejecutar, pausa, stop, reset, consola de G-code y desbloqueo (<code>$X</code>).</li>
+                        <li><strong>Conversión de sismogramas:</strong> importa registros en formato GeoCSV, muestra los datos y la gráfica, y genera el .gcode.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Sistema de sensado</h2>
+                    <ul>
+                        <li>Hasta 4 sensores MPU6050 (acelerómetro y giroscopio) sobre la maqueta, leídos por I2C con un multiplexor TCA9548 y un ESP32.</li>
+                        <li>Calibración en reposo antes de cada simulación y lectura cada 10 ms aproximadamente: aceleración en X, Y y Z (m/s²) e inclinación en X e Y (grados).</li>
+                        <li>Registro en un archivo .csv en tarjeta SD.</li>
+                        <li>Interfaz web con gráficos en tiempo real (últimos 30 s), aceleración máxima por eje, PGA e inclinación máxima; las simulaciones se pueden descargar.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Cómo se interpreta el G-code</h2>
+                    <ul>
+                        <li><code>G1 X… F…</code>: mueve la mesa a X (mm) a F mm/min; el simulador calcula así la duración de cada tramo.</li>
+                        <li><code>G4 P…</code>: pausa en segundos.</li>
+                        <li><code>$H</code>: homing; <code>M2</code>: fin del programa.</li>
+                        <li>Los G-code generados desde sismogramas reales normalizan los datos a la carrera de 150 mm.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Montaje de las maquetas</h2>
+                    <ul>
+                        <li>Colocar los ganchos sobre las columnas inferiores de la maqueta.</li>
+                        <li>Presentar la maqueta sobre la mesa móvil, haciendo coincidir los ganchos con los agujeros.</li>
+                        <li>Ajustar los tornillos parker de 4 mm o 5 mm para fijar los ganchos a la mesa.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Precauciones</h2>
+                    <ul>
+                        <li>Fijar bien la maqueta antes de iniciar el movimiento.</li>
+                        <li>No exceder los límites físicos al crear simulaciones o mover el carro a mano.</li>
+                        <li>Usar la alimentación correcta (12 V a 35 V).</li>
+                        <li>Pausar el uso si el motor o la electrónica se sobrecalientan.</li>
+                        <li>Lubricar las varillas con grasa si el movimiento se traba.</li>
+                        <li>Desconectar por software antes de desenchufar el USB.</li>
+                        <li>En estado ALARM: desbloquear por software y, si no alcanza, hacer un soft reset.</li>
+                    </ul>
+                </article>
+
+                <article class="sim-card">
+                    <h2>Público objetivo</h2>
+                    <ul>
+                        <li><strong>Educación técnica y universitaria:</strong> escuelas técnicas y facultades de ingeniería o arquitectura.</li>
+                        <li><strong>Estudios de arquitectura y construcción:</strong> pruebas de modelos a escala para detectar fallas de regularidad geométrica o torsión.</li>
+                        <li><strong>Investigación:</strong> experimentación técnica sobre sismos.</li>
+                    </ul>
+                </article>
+            </section>
         </main>
     </div>
 

@@ -565,6 +565,63 @@ a {
     filter: saturate(1.1) contrast(1.06);
 }
 
+.prototype-col {
+    display: grid;
+    gap: 16px;
+    min-width: 0;
+}
+
+.sim-cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 24px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--orange-soft), var(--orange) 55%, var(--orange-deep));
+    color: #1b1007;
+    box-shadow: 0 16px 28px rgba(239, 124, 45, 0.26);
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.sim-cta:hover,
+.sim-cta:focus-visible {
+    transform: translateY(-3px);
+    filter: brightness(1.06);
+}
+
+.sim-cta-icon {
+    display: grid;
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--orange-soft);
+    font-size: 1.3rem;
+}
+
+.sim-cta strong {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.sim-cta small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0.85;
+}
+
+.sim-cta-arrow {
+    margin-left: auto;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
 .gallery-page {
     min-height: 100vh;
     background: linear-gradient(180deg, #061f2d 0%, #071522 100%);
